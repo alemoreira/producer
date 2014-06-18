@@ -31,3 +31,8 @@ gem 'jquery-rails'
 
 # To use debugger
 # gem 'debugger'
+
+group :development do
+  gem 'hirb', '0.7.2'
+  gem 'hirb-colors', '0.0.1'
+end
