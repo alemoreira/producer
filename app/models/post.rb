@@ -1,8 +1,10 @@
 class Post < ActiveRecord::Base
-  attr_accessible :body, :excerpt, :title
+  attr_accessible :body, :excerpt, :title, :author_id
 
+  belongs_to :author, class_name: 'User', foreign_key: 'author_id'
   has_many :comments, dependent: :destroy
 
-  validates :title, :body, presence: true
+  validates :title, :body, :author, presence: true
+  validates_associated :author
 
 end

@@ -1,4 +1,5 @@
 class PostsController < ApplicationController
+  before_filter :load_authors, only: [:new, :edit, :create, :update]
   # GET /posts
   # GET /posts.json
   def index
@@ -79,5 +80,10 @@ class PostsController < ApplicationController
       format.html { redirect_to posts_url }
       format.json { head :no_content }
     end
+  end
+
+  private
+  def load_authors
+    @authors = User.all
   end
 end
