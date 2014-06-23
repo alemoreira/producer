@@ -55,8 +55,12 @@ class CommentsController < ApplicationController
   def create
     @post = Post.find(params[:post_id])
     @comment = @post.comments.build(params[:comment])
-    flash[:alert] = 'Fail to receive the comment. Double check the fields.' unless @comment.save
-    redirect_to @post
+    if @comment.save
+      redirect_to @post
+    else
+      flash[:alert] = 'Fail to receive the comment. Double check the fields.'
+      render 'posts/show'
+    end
   end
 
   # PUT /comments/1
