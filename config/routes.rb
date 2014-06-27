@@ -1,9 +1,7 @@
 Producer::Application.routes.draw do
-
   namespace :post do
     resources :categories
   end
-
 
   resources :posts do
     resources :comments
